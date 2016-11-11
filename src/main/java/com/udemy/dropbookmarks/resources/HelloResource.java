@@ -1,5 +1,8 @@
 package com.udemy.dropbookmarks.resources;
 
+import com.udemy.dropbookmarks.core.User;
+import io.dropwizard.auth.Auth;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,5 +14,12 @@ public class HelloResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getGreeting() {
         return "Hello World";
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/secured")
+    public String getSecuredGreeting(@Auth User user) {
+        return "Hello Secured World";
     }
 }
